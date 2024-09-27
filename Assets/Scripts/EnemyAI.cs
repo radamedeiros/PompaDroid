@@ -3,31 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Enemy))]
-public class EnemyAI : MonoBehaviour {
-
-    public enum EnemyAction
+public class EnemyAI : MonoBehaviour
+{
+    public enum EnemyState
     {
-        None,
-        Wait,
-        Attack,
-        Chase,
-        Roam
+        Idle,
+        Waiting,
+        Attacking,
+        Chasing,
+        Roaming
     }
 
+    [System.Serializable]
     public class DecisionWeight
     {
         public int weight;
-        public EnemyAction action;
-        public DecisionWeight(int weight, EnemyAction action)
+        public EnemyState state;
+        public DecisionWeight(int weight, EnemyState state)
         {
             this.weight = weight;
-            this.action = action;
+            this.state = state;
         }
     }
 
-    //These variables reference the hero and enemy objects. The float variables will be used to calculate if the enemy will hit the hero if it chooses to attack.
-    Enemy enemy;
-    GameObject heroObj;
+    private Enemy enemy;
+    private List<Transform> heroTransforms = new List<Transform>();
 
     public float attackReachMin;
     public float attackReachMax;
@@ -35,134 +35,205 @@ public class EnemyAI : MonoBehaviour {
 
     public HeroDetector detector;
 
-    List<DecisionWeight> weights;
+    private List<DecisionWeight> weights = new List<DecisionWeight>();
 
-    public EnemyAction currentAction = EnemyAction.None;
+    private EnemyState currentState = EnemyState.Idle;
 
-    private float decisionDuration;
+    private Coroutine actionCoroutine;
 
     private void Start()
     {
-        weights = new List<DecisionWeight>();
         enemy = GetComponent<Enemy>();
-        heroObj = GameObject.FindGameObjectWithTag("Hero");
-    }
 
-    private void Chase()
-    {
-        Vector3 directionVector = heroObj.transform.position - transform.position;
-        directionVector.z = directionVector.y = 0;
-        directionVector.Normalize();
-
-        //Flip the direction vector and multiply this with the personalSpace property, which sets the robot’s destination to a point in front of the hero
-        directionVector *= -1f;
-        directionVector *= personalSpace;
-
-        //This affords the robot a more natural attack position, instead of always placing it all at the exact same point in front of the hero.
-        directionVector.z += Random.Range(-0.4f, 0.4f);
-
-        enemy.MoveToOffset(heroObj.transform.position, directionVector);
-        decisionDuration = Random.Range(0.2f, 0.4f);
-    }
-
-    private void Wait()
-    {
-        decisionDuration = Random.Range(0.2f, 0.5f);
-        enemy.Wait();
-    }
-
-    private void Attack()
-    {
-        enemy.FaceTarget(heroObj.transform.position);
-        enemy.Attack();
-        decisionDuration = Random.Range(1.0f, 1.5f);
-    }
-
-    private void Roam()
-    {
-        float randomDegree = Random.Range(0, 360);
-        Vector2 offset = new Vector2(Mathf.Sin(randomDegree), Mathf.Cos(randomDegree));
-        float distance = Random.Range(1, 3);
-        offset *= distance;
-
-        Vector3 directionVector = new Vector3(offset.x, 0, offset.y);
-        enemy.MoveTo(enemy.transform.position + directionVector);
-
-        decisionDuration = Random.Range(0.3f, 0.6f);
-    }
-
-    private void DecideWithWeights(int attack, int wait, int chase, int move)
-    {
-        weights.Clear();
-
-        if (attack > 0)
-            weights.Add(new DecisionWeight(attack, EnemyAction.Attack));
-        if (chase > 0)
-            weights.Add(new DecisionWeight(chase, EnemyAction.Chase));
-        if (wait > 0)
-            weights.Add(new DecisionWeight(wait, EnemyAction.Wait));
-        if (move > 0)
-            weights.Add(new DecisionWeight(move, EnemyAction.Roam));
-
-        int total = attack + chase + wait + move;
-        int intDecision = Random.Range(0, total - 1);
-
-        foreach (DecisionWeight weight in weights)
+        // Encontrar todos os heróis na cena
+        GameObject[] heroObjs = GameObject.FindGameObjectsWithTag("Hero");
+        foreach (GameObject heroObj in heroObjs)
         {
-            intDecision -= weight.weight;
-            if (intDecision <= 0)
-            {
-                SetDecision(weight.action);
-                break;
-            }
+            heroTransforms.Add(heroObj.transform);
         }
-    }
 
-    private void SetDecision(EnemyAction action)
-    {
-        currentAction = action;
-        if (action == EnemyAction.Attack)
-            Attack();
-        else if (action == EnemyAction.Chase)
-            Chase();
-        else if (action == EnemyAction.Roam)
-            Roam();
-        else if (action == EnemyAction.Wait)
-            Wait();
+        if (heroTransforms.Count == 0)
+        {
+            Debug.LogError("Nenhum objeto Hero encontrado!");
+        }
     }
 
     private void Update()
     {
-        float sqrDistance = Vector3.SqrMagnitude(
-            heroObj.transform.position - transform.position);
+        if (heroTransforms.Count == 0) return;
 
-        bool canReach = attackReachMin * attackReachMin < sqrDistance
-            && sqrDistance < attackReachMax * attackReachMax;
+        // Selecionar o herói mais próximo
+        Transform targetHero = GetClosestHero();
 
-        //makes sure robot is close enough on z axis
-        bool samePlane = Mathf.Abs(heroObj.transform.position.z - transform.position.z) < 0.5f;
+        if (targetHero == null) return;
 
-        if (canReach && currentAction == EnemyAction.Chase)
-            SetDecision(EnemyAction.Wait);
-
-        if (decisionDuration > 0.0f)
-            decisionDuration -= Time.deltaTime;
-        else
+        switch (currentState)
         {
-            if (!detector.heroIsNearby) // hero is not close
-                DecideWithWeights(0, 20, 80, 0); //decide between doing nothing and chasing
-            else
+            case EnemyState.Idle:
+                DecideNextAction(targetHero);
+                break;
+            case EnemyState.Waiting:
+            case EnemyState.Attacking:
+            case EnemyState.Chasing:
+            case EnemyState.Roaming:
+                // Ação atual está sendo executada pela corrotina
+                break;
+        }
+    }
+
+    private Transform GetClosestHero()
+    {
+        Transform closestHero = null;
+        float minDistanceSqr = Mathf.Infinity;
+        foreach (Transform hero in heroTransforms)
+        {
+            if (hero == null) continue;
+            float distanceSqr = (hero.position - transform.position).sqrMagnitude;
+            if (distanceSqr < minDistanceSqr)
             {
-                if (samePlane)
-                {
-                    if (canReach)
-                        DecideWithWeights(70, 15, 0, 15); // wants to attack
-                    else
-                        DecideWithWeights(0, 10, 80, 10); // wants to move into position
-                }
-                else
-                    DecideWithWeights(0, 20, 60, 20); // wants to move into same plane position
+                minDistanceSqr = distanceSqr;
+                closestHero = hero;
             }
         }
+        return closestHero;
+    }
+
+    private void DecideNextAction(Transform targetHero)
+    {
+        float sqrDistance = (targetHero.position - transform.position).sqrMagnitude;
+        bool canReach = attackReachMin * attackReachMin < sqrDistance && sqrDistance < attackReachMax * attackReachMax;
+        bool samePlane = Mathf.Abs(targetHero.position.z - transform.position.z) < 0.5f;
+
+        weights.Clear();
+
+        if (!detector.heroIsNearby)
+        {
+            weights.Add(new DecisionWeight(20, EnemyState.Waiting));
+            weights.Add(new DecisionWeight(80, EnemyState.Chasing));
+        }
+        else
+        {
+            if (samePlane)
+            {
+                if (canReach)
+                {
+                    weights.Add(new DecisionWeight(70, EnemyState.Attacking));
+                    weights.Add(new DecisionWeight(15, EnemyState.Waiting));
+                    weights.Add(new DecisionWeight(15, EnemyState.Roaming));
+                }
+                else
+                {
+                    weights.Add(new DecisionWeight(80, EnemyState.Chasing));
+                    weights.Add(new DecisionWeight(10, EnemyState.Waiting));
+                    weights.Add(new DecisionWeight(10, EnemyState.Roaming));
+                }
+            }
+            else
+            {
+                weights.Add(new DecisionWeight(60, EnemyState.Chasing));
+                weights.Add(new DecisionWeight(20, EnemyState.Waiting));
+                weights.Add(new DecisionWeight(20, EnemyState.Roaming));
+            }
+        }
+
+        EnemyState nextState = GetWeightedRandomState(weights);
+        SetState(nextState, targetHero);
+    }
+
+    private EnemyState GetWeightedRandomState(List<DecisionWeight> decisionWeights)
+    {
+        int totalWeight = 0;
+        foreach (var weight in decisionWeights)
+        {
+            totalWeight += weight.weight;
+        }
+
+        int randomValue = Random.Range(0, totalWeight);
+        foreach (var weight in decisionWeights)
+        {
+            if (randomValue < weight.weight)
+            {
+                return weight.state;
+            }
+            randomValue -= weight.weight;
+        }
+        return EnemyState.Idle;
+    }
+
+    private void SetState(EnemyState newState, Transform targetHero)
+    {
+        if (actionCoroutine != null)
+        {
+            StopCoroutine(actionCoroutine);
+        }
+
+        currentState = newState;
+
+        switch (newState)
+        {
+            case EnemyState.Attacking:
+                actionCoroutine = StartCoroutine(AttackRoutine(targetHero));
+                break;
+            case EnemyState.Chasing:
+                actionCoroutine = StartCoroutine(ChaseRoutine(targetHero));
+                break;
+            case EnemyState.Roaming:
+                actionCoroutine = StartCoroutine(RoamRoutine());
+                break;
+            case EnemyState.Waiting:
+                actionCoroutine = StartCoroutine(WaitRoutine());
+                break;
+        }
+    }
+
+    private IEnumerator AttackRoutine(Transform targetHero)
+    {
+        enemy.FaceTarget(targetHero.position);
+        enemy.Attack();
+
+        float duration = Random.Range(1.0f, 1.5f);
+        yield return new WaitForSeconds(duration);
+
+        currentState = EnemyState.Idle;
+    }
+
+    private IEnumerator ChaseRoutine(Transform targetHero)
+    {
+        Vector3 direction = (targetHero.position - transform.position).normalized;
+        direction.y = 0;
+        Vector3 destination = targetHero.position - direction * personalSpace;
+        destination.z += Random.Range(-0.4f, 0.4f);
+
+        enemy.MoveTo(destination);
+
+        float duration = Random.Range(0.2f, 0.4f);
+        yield return new WaitForSeconds(duration);
+
+        currentState = EnemyState.Idle;
+    }
+
+    private IEnumerator RoamRoutine()
+    {
+        float randomAngle = Random.Range(0, 360);
+        Vector3 direction = new Vector3(Mathf.Sin(randomAngle), 0, Mathf.Cos(randomAngle));
+        float distance = Random.Range(1, 3);
+        Vector3 destination = transform.position + direction * distance;
+
+        enemy.MoveTo(destination);
+
+        float duration = Random.Range(0.3f, 0.6f);
+        yield return new WaitForSeconds(duration);
+
+        currentState = EnemyState.Idle;
+    }
+
+    private IEnumerator WaitRoutine()
+    {
+        enemy.Wait();
+
+        float duration = Random.Range(0.2f, 0.5f);
+        yield return new WaitForSeconds(duration);
+
+        currentState = EnemyState.Idle;
     }
 }

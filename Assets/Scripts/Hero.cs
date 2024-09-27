@@ -8,7 +8,7 @@ public class Hero : Actor
     public float walkSpeed = 2;
     public float runSpeed = 5;
 
-    //variable declarations for running
+    // Variáveis de corrida
     bool isRunning;
     bool isMoving;
     float lastWalk = 0.0f;
@@ -19,27 +19,31 @@ public class Hero : Actor
     Vector3 curDirection;
     bool isFacingLeft;
 
-    //variables for jumping
+    // Variáveis de pulo
     bool isJumpLandAnim;
     bool isJumpingAnim;
 
-    public InputHandler input;
+    // Controle de inputs
+    private PlayerControls controls;
+    private Vector2 moveInput;
+    private bool jumpInput;
+    private bool attackInput;
 
     public float jumpForce = 1750;
     private float jumpDuration = 0.2f;
     private float lastJumpTime;
 
-    //variables for attacking
+    // Variáveis de ataque
     bool isAttackingAnim;
     float lastAttackTime;
     float attackLimit = 0.14f;
 
-    //variables for entrance
+    // Variáveis de entrada automática
     public Walker walker;
     public bool isAutoPiloting;
     public bool controllable = true;
 
-    //variables for jump attack
+    // Variáveis para ataque no pulo
     public bool canJumpAttack = true;
     private int currentAttackChain = 1;
     public int evaluatedAttackChain = 0;
@@ -47,11 +51,11 @@ public class Hero : Actor
 
     bool isHurtAnim;
 
-    //variables for run attack
+    // Variáveis para ataque correndo
     public AttackData runAttack;
-    public float runAttackForce = 1.8f; // how far the attack will go
+    public float runAttackForce = 1.8f; // Distância do ataque
 
-    //variables for combo
+    // Variáveis para combo
     public AttackData normalAttack2;
     public AttackData normalAttack3;
 
@@ -59,13 +63,13 @@ public class Hero : Actor
     public float chainComboLimit = 0.3f;
     const int maxCombo = 3;
 
-    //variables for hero knockdown tolerance
+    // Variáveis de tolerância a dano
     public float hurtTolerance;
     public float hurtLimit = 20;
     public float recoveryRate = 5;
 
     bool isPickingUpAnim;
-    bool weaponDropPressed = false; // when player jumps
+    bool weaponDropPressed = false; // Quando o jogador pula
     public bool hasWeapon;
 
     public bool canJump = true;
@@ -75,10 +79,38 @@ public class Hero : Actor
     public Powerup currentPowerup;
     public GameObject powerupRoot;
 
-    public AudioClip hit2Clip; //hero's strong attack sfx
+    public AudioClip hit2Clip; // SFX do ataque forte do herói
 
     public GameManager gameManager;
     public JumpCollider jumpCollider;
+
+    private void Awake()
+    {
+        // Inicializa os controles de input
+        controls = new PlayerControls();
+
+        // Associa os métodos aos eventos de input
+        controls.Gameplay.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        controls.Gameplay.Move.canceled += ctx => moveInput = Vector2.zero;
+
+        controls.Gameplay.Jump.performed += ctx => jumpInput = true;
+        controls.Gameplay.Jump.canceled += ctx => jumpInput = false;
+
+        controls.Gameplay.Attack.performed += ctx => attackInput = true;
+        controls.Gameplay.Attack.canceled += ctx => attackInput = false;
+    }
+
+    private void OnEnable()
+    {
+        // Habilita o controle quando o objeto é ativado
+        controls.Gameplay.Enable();
+    }
+
+    private void OnDisable()
+    {
+        // Desabilita o controle quando o objeto é desativado
+        controls.Gameplay.Disable();
+    }
 
     protected override void Start()
     {
@@ -89,47 +121,34 @@ public class Hero : Actor
 
     public override void Update()
     {
-        //calls superclass
         base.Update();
 
-        //handles button presses after death
         if (!isAlive)
             return;
 
-        //updates animation variable that stores whether hero is attacking or not
         isAttackingAnim =
             baseAnim.GetCurrentAnimatorStateInfo(0).IsName("attack1") ||
-                    baseAnim.GetCurrentAnimatorStateInfo(0).IsName("attack2") ||
-                    baseAnim.GetCurrentAnimatorStateInfo(0).IsName("attack3") || 
-                    baseAnim.GetCurrentAnimatorStateInfo(0).IsName("jump_attack") || 
-                    baseAnim.GetCurrentAnimatorStateInfo(0).IsName("run_attack");
+            baseAnim.GetCurrentAnimatorStateInfo(0).IsName("attack2") ||
+            baseAnim.GetCurrentAnimatorStateInfo(0).IsName("attack3") ||
+            baseAnim.GetCurrentAnimatorStateInfo(0).IsName("jump_attack") ||
+            baseAnim.GetCurrentAnimatorStateInfo(0).IsName("run_attack");
 
-        //These lines update the variables that store whether the hero is jumping or not.
         isJumpLandAnim =
             baseAnim.GetCurrentAnimatorStateInfo(0).IsName("jump_land");
         isJumpingAnim =
             baseAnim.GetCurrentAnimatorStateInfo(0).IsName("jump_rise") ||
-                    baseAnim.GetCurrentAnimatorStateInfo(0).IsName("jump_fall");
+            baseAnim.GetCurrentAnimatorStateInfo(0).IsName("jump_fall");
 
-        //tracks when the hurt animation is played
         isHurtAnim =
             baseAnim.GetCurrentAnimatorStateInfo(0).IsName("hurt");
 
-        //tracks when pickup animation is played
         isPickingUpAnim =
             baseAnim.GetCurrentAnimatorStateInfo(0).IsName("pickup");
 
-        //prevents from performing actions during entrance
         if (isAutoPiloting)
             return;
 
-        float h = input.GetHorizontalAxis();
-        float v = input.GetVerticalAxis();
-
-        bool jump = input.GetJumpButtonDown();
-        bool attack = input.GetAttackButtonDown();
-
-        curDirection = new Vector3(h, 0, v);
+        curDirection = new Vector3(moveInput.x, 0, moveInput.y);
         curDirection.Normalize();
 
         if (!isAttackingAnim)
@@ -146,12 +165,12 @@ public class Hero : Actor
                     baseAnim.SetInteger("EvaluatedChain", evaluatedAttackChain);
                 }
             }
-            if (v == 0 && h == 0)
+            if (moveInput == Vector2.zero)
             {
                 Stop();
                 isMoving = false;
             }
-            else if (!isMoving && (v != 0 || h != 0))
+            else if (!isMoving && moveInput != Vector2.zero)
             {
                 isMoving = true;
                 float dotProduct = Vector3.Dot(curDirection, lastWalkVector);
@@ -161,33 +180,29 @@ public class Hero : Actor
                 else
                 {
                     Walk();
-
-                    if (h != 0)
-                    {
-                        lastWalkVector = curDirection;
-                        lastWalk = Time.time;
-                    }
+                    lastWalkVector = curDirection;
+                    lastWalk = Time.time;
                 }
             }
         }
 
-        if (jump && hasWeapon)
+        if (jumpInput && hasWeapon)
         {
             weaponDropPressed = true;
             DropWeapon();
         }
 
-        if (weaponDropPressed && !jump)
+        if (weaponDropPressed && !jumpInput)
             weaponDropPressed = false;
 
-        //triggers/calls Jump
-        if (canJump && jump && !isKnockedOut && jumpCollider.CanJump(curDirection, frontVector) && 
+        if (jumpInput && canJump && !isKnockedOut && jumpCollider.CanJump(curDirection, frontVector) &&
             !isJumpLandAnim && !isAttackingAnim && !isPickingUpAnim && !weaponDropPressed &&
             (isGrounded || (isJumpingAnim && Time.time < lastJumpTime + jumpDuration)))
+        {
             Jump(curDirection);
+        }
 
-        //pickups have priority over attacking
-        if (attack && Time.time >= lastAttackTime + attackLimit && isGrounded && !isPickingUpAnim)
+        if (attackInput && Time.time >= lastAttackTime + attackLimit && isGrounded && !isPickingUpAnim)
         {
             if (nearbyPowerup != null && nearbyPowerup.CanEquip())
             {
@@ -197,14 +212,12 @@ public class Hero : Actor
             }
         }
 
-        //triggers/calls Attack
-        if (attack && Time.time >= lastAttackTime + attackLimit && !isKnockedOut && !isPickingUpAnim)
+        if (attackInput && Time.time >= lastAttackTime + attackLimit && !isKnockedOut && !isPickingUpAnim)
         {
             lastAttackTime = Time.time;
             Attack();
         }
 
-        //calculates knockdown tolerance
         if (hurtTolerance < hurtLimit)
         {
             hurtTolerance += Time.deltaTime * recoveryRate;
@@ -214,7 +227,6 @@ public class Hero : Actor
 
     private void FixedUpdate()
     {
-        //prevents movements after death
         if (!isAlive)
             return;
 
@@ -227,7 +239,6 @@ public class Hero : Actor
                 body.MovePosition(transform.position + moveVector * Time.fixedDeltaTime);
                 baseAnim.SetFloat("Speed", moveVector.magnitude);
 
-                //flips sprite towards movement direction
                 if (moveVector != Vector3.zero && isGrounded && !isKnockedOut && !isAttackingAnim)
                 {
                     if (moveVector.x != 0)
@@ -238,7 +249,6 @@ public class Hero : Actor
         }
     }
 
-    //whenever hero is on floor, he's able to do a jump attack
     protected override void OnCollisionEnter(Collision collision)
     {
         base.OnCollisionEnter(collision);
@@ -255,9 +265,9 @@ public class Hero : Actor
     public override void TakeDamage(float value, Vector3 hitVector, bool knockdown = false)
     {
         hurtTolerance -= value;
-        if (hurtTolerance <= 0 || !isGrounded) // a knockdown was scored
+        if (hurtTolerance <= 0 || !isGrounded)
         {
-            hurtTolerance = hurtLimit; // reset hurtTolerance for knockdown
+            hurtTolerance = hurtLimit;
             knockdown = true;
         }
         if (hasWeapon)
@@ -314,10 +324,9 @@ public class Hero : Actor
         {
             if (!isGrounded)
             {
-                //jump attack
                 if (isJumpingAnim && canJumpAttack)
                 {
-                    canJumpAttack = false; //limits jump attack to 1
+                    canJumpAttack = false;
                     currentAttackChain = 1;
                     evaluatedAttackChain = 0;
                     baseAnim.SetInteger("EvaluatedChain", evaluatedAttackChain);
@@ -329,9 +338,8 @@ public class Hero : Actor
             }
             else
             {
-                if (isRunning) // run attack
+                if (isRunning)
                 {
-                    //creates lunge with upward and forward force
                     body.AddForce((Vector3.up + (frontVector * 5)) * runAttackForce, ForceMode.Impulse);
 
                     currentAttackChain = 1;
@@ -339,7 +347,7 @@ public class Hero : Actor
                     baseAnim.SetInteger("CurrentChain", currentAttackChain);
                     baseAnim.SetInteger("EvaluatedChain", evaluatedAttackChain);
                 }
-                else // normal attack
+                else
                 {
                     if (currentAttackChain == 0 || chainComboTimer == 0)
                     {
@@ -416,7 +424,6 @@ public class Hero : Actor
         Walk();
     }
 
-    //turns gravity back on after jump attack
     public void DidJumpAttack()
     {
         body.useGravity = true;

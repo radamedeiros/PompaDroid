@@ -84,17 +84,28 @@ public class Robot : Enemy {
     protected override IEnumerator KnockdownRoutine()
     {
         isKnockedOut = true;
-        baseAnim.SetTrigger("Knockdown");
         ai.enabled = false;
-
         actorCollider.SetColliderStance(false);
-        yield return new WaitForSeconds(2.0f);
-        actorCollider.SetColliderStance(true);
-        baseAnim.SetTrigger("GetUp");
-        ai.enabled = true;
+
+        if (currentLife <= 0)
+        {
+            baseAnim.SetTrigger("Death");
+            // Wait for the death animation to finish
+            yield return new WaitForSeconds(3.0f); // Adjust the time as per your animation length
+            Destroy(gameObject); // Optionally destroy the robot
+        }
+        else
+        {
+            baseAnim.SetTrigger("Knockdown");
+            yield return new WaitForSeconds(2.0f);
+            actorCollider.SetColliderStance(true);
+            baseAnim.SetTrigger("GetUp");
+            ai.enabled = true;
+        }
 
         knockdownRoutine = null;
     }
+
 }
 
 public enum RobotColor

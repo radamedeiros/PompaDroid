@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public LifeBar enemylifeBar;
     public GameObject goIndicator;
@@ -119,7 +120,7 @@ public class GameManager : MonoBehaviour {
     {
         if (currentBattleEvent == null && hasRemainingEvents)
         {
-            if (Mathf.Abs(currentLevelData.battleData[nextEventIndex].column - 
+            if (Mathf.Abs(currentLevelData.battleData[nextEventIndex].column -
                           cameraBounds.activeCamera.transform.position.x) < 0.2f)
             {
                 PlayBattleEvent(currentLevelData.battleData[nextEventIndex]);

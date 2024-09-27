@@ -1,0 +1,1372 @@
+fileFormatVersion: 2
+guid: 28e0b5d9ed7423a45b05cdb32e960b50
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 22
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 553
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19b3842617ff899469901f131507f81d
+      internalID: 1454766195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 553
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96ebfd8a819017a43919af056d06be2f
+      internalID: -1444971292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 553
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 073f9957dc1cce7418a281a8be46a9db
+      internalID: -930401133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 553
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4367d1a229811c446bd82c05c4125b5c
+      internalID: -739755740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_4
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 553
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60ef08385642fd94bbd2b44ef9685df4
+      internalID: -1655525989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_5
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 553
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af224e03a82596b45a4944707430f868
+      internalID: -130791010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_6
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 553
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4afdf522868bd0e47aa019dbde77ca70
+      internalID: -2027055422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_7
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 553
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19422480e5c035a4ca36f08751b0682b
+      internalID: -503440230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 474
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5a2df1e639158c4984ea840e50086a0
+      internalID: 1509061404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_9
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 474
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b31a307ac4c361b42b9b80fbf492b691
+      internalID: -125704018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_10
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 474
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9725a8467cde1c6409df7d6986e0ddbf
+      internalID: -1631604726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_11
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 474
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f6a658dc72e5294eae982dfa7269835
+      internalID: -913983461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_12
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 474
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 109531ac0d9825940924fc1e8a9d31b4
+      internalID: -574702915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_13
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 474
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 429e57513fa93ba4ba06f46bbae0e3f0
+      internalID: -108185029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_14
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 474
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96bc89a21dc06544e9134eb23a0e2d1b
+      internalID: 1926429953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 395
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76047e413b7c924418a8768920b6e296
+      internalID: 692434007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_16
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 395
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2588b12c508088646a5cb53938450535
+      internalID: -18934398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 395
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87dd2cd7374b1d4489c571d48f6c7332
+      internalID: 1559356019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_18
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 395
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e1599b74363dad4794b1332a2c6f34f
+      internalID: 1921905633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_19
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 395
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 326e72f11c7d0a54582a326b702e67db
+      internalID: 1268779592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_20
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 395
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5db1d7d5d060b94fa5020626be6dcc5
+      internalID: -445268846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_21
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 395
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a12b9b7eb694ddc4aacba5b2ac746b69
+      internalID: -2029439031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_22
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 395
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 422fdeef663d53242bb30e4b071d63df
+      internalID: -1785524440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 316
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01fda7799d9f261459fb01c823e31da2
+      internalID: 1149305554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_24
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 316
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5facd8ba2b9f8d946b4950109cc4cb70
+      internalID: 1354255444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_25
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 316
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b0dded43751aa04d9f9062f05b269bd
+      internalID: -1985578360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_26
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 316
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d3dd1cd226f6ad43abb6c5206575664
+      internalID: -1539208931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_27
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 316
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a757e25858b65bd47a5504204fa16add
+      internalID: -1435974008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_28
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 316
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f63efa53b74bb6c4b9f273f8b95b5b1e
+      internalID: -646018660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_29
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 316
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e8c0abfc609fa04e99c4db0995e3d4a
+      internalID: -1094322286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_30
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 316
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26c693724b29a414f914d12b8f703746
+      internalID: 275091757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 237
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a4650ebc78e18e44a8db91b30e8137e
+      internalID: -968417168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_32
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 237
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 863c5dc5e998a604087037977c0f3842
+      internalID: -167242751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_33
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 237
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce02db097d47d843b5a31516ad77407
+      internalID: 832587021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_34
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 237
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb4ca82c45b8ef548b782848dde70deb
+      internalID: -559034217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_35
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 237
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22aaad5ecfca6274fa9ba7e83192683d
+      internalID: -919042242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_36
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 237
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955948801c24ac64a9762e8ff1957257
+      internalID: -1446725495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_37
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 237
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a44fc90e38e4e34b80defc736ea6ae1
+      internalID: -68075083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_38
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 237
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5066e4ee78e88747b612fe7206ba4dd
+      internalID: -813999109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 158
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca715ed81c9d7c942a33f2cffaa8c283
+      internalID: -869007856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_40
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 158
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2620ad2b7e9e1a48a562e9fc1f9e69d
+      internalID: 1362971686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_41
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 158
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f913f60a060df0d4c94c343b3c2c0eba
+      internalID: 1273229708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_42
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 158
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b958bbed1c9d0147b44c421752d0102
+      internalID: -1948036495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_43
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 158
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31baf5b167b200042a0e3a82b0d1ff36
+      internalID: -39196184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_44
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 158
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 664659f171e43714393935a97b82e5bd
+      internalID: 340549833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_45
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 158
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50b5b810ee139cd44849b08df85d0c9d
+      internalID: 508792628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_46
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 158
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.19}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 393e6a319ee810e4daa5143a65f95283
+      internalID: 81651193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 79
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.19}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd5edb6d0883ed045991e4c2bbd376e2
+      internalID: 2114795822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_48
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 79
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.19}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094d9c8915f8ad1498e5e2be2a7631e2
+      internalID: 876931734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_49
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 79
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.19}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71befff10bcad034faf98785f4352dcc
+      internalID: 417296127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_50
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 79
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.19}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40daacfc34a141c4f997a9a1040e808b
+      internalID: -1449611452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_51
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 79
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 831f693a8a0ff3740b88d81584ff07e6
+      internalID: -1366822072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_52
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 79
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d76d185103c414f947dd20418d0ac0
+      internalID: -1369943162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_53
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 79
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c9135a8baa1a5a4db7b0a3f85b5db1b
+      internalID: 1001291992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_54
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 79
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0981cd14cedc7614b9ba98e16a94bfc0
+      internalID: 98918413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gus-Recovered-Recovered_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 80
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e256b0fa7ef69ea4b8f664280cdae59a
+      internalID: 1312307902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Gus-Recovered-Recovered_0: 1454766195
+      Gus-Recovered-Recovered_1: -1444971292
+      Gus-Recovered-Recovered_10: -1631604726
+      Gus-Recovered-Recovered_11: -913983461
+      Gus-Recovered-Recovered_12: -574702915
+      Gus-Recovered-Recovered_13: -108185029
+      Gus-Recovered-Recovered_14: 1926429953
+      Gus-Recovered-Recovered_15: 692434007
+      Gus-Recovered-Recovered_16: -18934398
+      Gus-Recovered-Recovered_17: 1559356019
+      Gus-Recovered-Recovered_18: 1921905633
+      Gus-Recovered-Recovered_19: 1268779592
+      Gus-Recovered-Recovered_2: -930401133
+      Gus-Recovered-Recovered_20: -445268846
+      Gus-Recovered-Recovered_21: -2029439031
+      Gus-Recovered-Recovered_22: -1785524440
+      Gus-Recovered-Recovered_23: 1149305554
+      Gus-Recovered-Recovered_24: 1354255444
+      Gus-Recovered-Recovered_25: -1985578360
+      Gus-Recovered-Recovered_26: -1539208931
+      Gus-Recovered-Recovered_27: -1435974008
+      Gus-Recovered-Recovered_28: -646018660
+      Gus-Recovered-Recovered_29: -1094322286
+      Gus-Recovered-Recovered_3: -739755740
+      Gus-Recovered-Recovered_30: 275091757
+      Gus-Recovered-Recovered_31: -968417168
+      Gus-Recovered-Recovered_32: -167242751
+      Gus-Recovered-Recovered_33: 832587021
+      Gus-Recovered-Recovered_34: -559034217
+      Gus-Recovered-Recovered_35: -919042242
+      Gus-Recovered-Recovered_36: -1446725495
+      Gus-Recovered-Recovered_37: -68075083
+      Gus-Recovered-Recovered_38: -813999109
+      Gus-Recovered-Recovered_39: -869007856
+      Gus-Recovered-Recovered_4: -1655525989
+      Gus-Recovered-Recovered_40: 1362971686
+      Gus-Recovered-Recovered_41: 1273229708
+      Gus-Recovered-Recovered_42: -1948036495
+      Gus-Recovered-Recovered_43: -39196184
+      Gus-Recovered-Recovered_44: 340549833
+      Gus-Recovered-Recovered_45: 508792628
+      Gus-Recovered-Recovered_46: 81651193
+      Gus-Recovered-Recovered_47: 2114795822
+      Gus-Recovered-Recovered_48: 876931734
+      Gus-Recovered-Recovered_49: 417296127
+      Gus-Recovered-Recovered_5: -130791010
+      Gus-Recovered-Recovered_50: -1449611452
+      Gus-Recovered-Recovered_51: -1366822072
+      Gus-Recovered-Recovered_52: -1369943162
+      Gus-Recovered-Recovered_53: 1001291992
+      Gus-Recovered-Recovered_54: 98918413
+      Gus-Recovered-Recovered_55: 1312307902
+      Gus-Recovered-Recovered_6: -2027055422
+      Gus-Recovered-Recovered_7: -503440230
+      Gus-Recovered-Recovered_8: 1509061404
+      Gus-Recovered-Recovered_9: -125704018
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

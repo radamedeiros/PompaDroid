@@ -4,9 +4,10 @@
 AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: hero_jump_land
-  serializedVersion: 6
+  serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -17,15 +18,17 @@ AnimationClip:
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves:
-  - curve:
+  - serializedVersion: 2
+    curve:
     - time: 0
-      value: {fileID: 21300000, guid: d819f1cd8c8fc2f499a459b81e7d7740, type: 3}
+      value: {fileID: -2048060732, guid: 3f2b5b1beef4a77439a0748419af6e5f, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: d819f1cd8c8fc2f499a459b81e7d7740, type: 3}
+      value: {fileID: 993308880, guid: 3f2b5b1beef4a77439a0748419af6e5f, type: 3}
     attribute: m_Sprite
     path: HeroSprite
     classID: 212
     script: {fileID: 0}
+    flags: 2
   m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
@@ -40,9 +43,11 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: d819f1cd8c8fc2f499a459b81e7d7740, type: 3}
-    - {fileID: 21300000, guid: d819f1cd8c8fc2f499a459b81e7d7740, type: 3}
+    - {fileID: -2048060732, guid: 3f2b5b1beef4a77439a0748419af6e5f, type: 3}
+    - {fileID: 993308880, guid: 3f2b5b1beef4a77439a0748419af6e5f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -67,5 +72,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_GenerateMotionCurves: 0
   m_Events: []

@@ -1,0 +1,1 @@
+In-game, the Tier 2/3 Foot Soldier uses the default palette, so knocking it off of its ride would have its palette switch all of a sudden.

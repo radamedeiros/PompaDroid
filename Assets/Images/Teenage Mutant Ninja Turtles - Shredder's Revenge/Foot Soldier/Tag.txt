@@ -1,0 +1,17 @@
+Game: Teenage Mutant Ninja Turtles: Shredder's Revenge
+Subject: Foot Soldier
+Copyright: Tribute Games, Adam J. Marin, Yolène Pichon, Mário Santos,
+           MotorRoach, Hunter Russell, Miroslav [Miroko] Marinov,
+           Thomas McCloskey, Jonathan [Persona] Kim,
+           Aaron (barosaros) Manzana, Kevin Eastman, Peter Laird, Stan Sakai
+Sprite Ripper: Random Talking Bush
+Hosting Permissions: The Spriters Resource
+                     Sprite Database
+Notes: The center point is at offset (128,224) by default. Raise the sprites by 96 pixels
+       to put them at their absolute center instead of the lower-biased offset (characters
+       rarely extend lower than 32 pixels past their center point). Sprites that extend past
+       the 256x256 boundary are still centered accordingly (for example, a 512-pixel height
+       means there's an extra 128 extra pixels on the top and bottom, making (128,352) the
+       absolute center for those). Animations with repeated frames are mentioned as such in
+       their filenames. Underscores imply separate frame numbers (e.g. "03_11_19_27" = frames
+       4, 12, 20, and 28), whereas dashes signify frame ranges (e.g. "03-06" = frames 4 to 7).

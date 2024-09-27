@@ -1,0 +1,1 @@
+The armor doesn't change palette for the other Foot Soldier variants, so this set of sprites won't be repeated for their folders.
