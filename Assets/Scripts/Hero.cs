@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Utilities;
+using UnityEngine.InputSystem;
 
 public class Hero : Actor
 {
@@ -28,6 +30,9 @@ public class Hero : Actor
     private Vector2 moveInput;
     private bool jumpInput;
     private bool attackInput;
+
+    // Identificador do jogador
+    public int playerId = 1; // 1 para Jogador 1, 2 para Jogador 2
 
     public float jumpForce = 1750;
     private float jumpDuration = 0.2f;
@@ -84,32 +89,58 @@ public class Hero : Actor
     public GameManager gameManager;
     public JumpCollider jumpCollider;
 
+
     private void Awake()
     {
-        // Inicializa os controles de input
         controls = new PlayerControls();
 
-        // Associa os métodos aos eventos de input
-        controls.Gameplay.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Move.canceled += ctx => moveInput = Vector2.zero;
+        if (playerId == 1)
+        {
+            controls.Player1.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+            controls.Player1.Move.canceled += ctx => moveInput = Vector2.zero;
 
-        controls.Gameplay.Jump.performed += ctx => jumpInput = true;
-        controls.Gameplay.Jump.canceled += ctx => jumpInput = false;
+            controls.Player1.Jump.performed += ctx => jumpInput = true;
+            controls.Player1.Jump.canceled += ctx => jumpInput = false;
 
-        controls.Gameplay.Attack.performed += ctx => attackInput = true;
-        controls.Gameplay.Attack.canceled += ctx => attackInput = false;
+            controls.Player1.Attack.performed += ctx => attackInput = true;
+            controls.Player1.Attack.canceled += ctx => attackInput = false;
+        }
+        else if (playerId == 2)
+        {
+            controls.Player2.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+            controls.Player2.Move.canceled += ctx => moveInput = Vector2.zero;
+
+            controls.Player2.Jump.performed += ctx => jumpInput = true;
+            controls.Player2.Jump.canceled += ctx => jumpInput = false;
+
+            controls.Player2.Attack.performed += ctx => attackInput = true;
+            controls.Player2.Attack.canceled += ctx => attackInput = false;
+        }
     }
 
     private void OnEnable()
     {
-        // Habilita o controle quando o objeto é ativado
-        controls.Gameplay.Enable();
+        if (playerId == 1)
+            controls.Player1.Enable();
+        else if (playerId == 2)
+            controls.Player2.Enable();
     }
 
     private void OnDisable()
     {
-        // Desabilita o controle quando o objeto é desativado
-        controls.Gameplay.Disable();
+        if (playerId == 1)
+            controls.Player1.Disable();
+        else if (playerId == 2)
+            controls.Player2.Disable();
+    }
+    public void SetControlScheme(string controlScheme)
+    {
+        controls.bindingMask = InputBinding.MaskByGroup(controlScheme);
+    }
+
+    public void SetDevice(InputDevice device)
+    {
+        controls.devices = new ReadOnlyArray<InputDevice>(new InputDevice[] { device });
     }
 
     protected override void Start()
