@@ -89,6 +89,8 @@ public class Hero : Actor
     public GameManager gameManager;
     public JumpCollider jumpCollider;
 
+    public Sprite thumbnailSprite;
+    public Color thumbnailColor = Color.white;
 
     private void Awake()
     {
@@ -146,9 +148,30 @@ public class Hero : Actor
     protected override void Start()
     {
         base.Start();
-        lifeBar = GameObject.FindGameObjectWithTag("HeroLifeBar").GetComponent<LifeBar>();
-        lifeBar.SetProgress(currentLife / maxLife);
+
+        // Determine the name of the lifebar GameObject based on playerId
+        string lifeBarName = playerId == 1 ? "HeroLifeBar" : "HeroLifeBar2";
+
+        // Find the lifebar GameObject by name
+        GameObject lifeBarObject = GameObject.Find(lifeBarName);
+
+        if (lifeBarObject != null)
+        {
+            lifeBar = lifeBarObject.GetComponent<LifeBar>();
+            lifeBar.SetProgress(currentLife / maxLife);
+
+            // Set the thumbnail image and color if the sprite is assigned
+            if (thumbnailSprite != null)
+            {
+                lifeBar.SetThumbnail(thumbnailSprite, thumbnailColor);
+            }
+        }
+        else
+        {
+            Debug.LogError($"LifeBar GameObject '{lifeBarName}' not found for player {playerId}.");
+        }
     }
+
 
     public override void Update()
     {

@@ -51,6 +51,7 @@ public class Actor : MonoBehaviour {
 
         actorCollider = GetComponent<ActorCollider>();
         actorCollider.SetColliderStance(true);
+
     }
 
     public virtual void Update()

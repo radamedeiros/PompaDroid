@@ -598,6 +598,7 @@ MonoBehaviour:
   walkSpeed: 2
   runSpeed: 5
   canRun: 1
+  playerId: 1
   jumpForce: 1750
   walker: {fileID: 3672004780119264661}
   isAutoPiloting: 1
@@ -634,6 +635,8 @@ MonoBehaviour:
   hit2Clip: {fileID: 8300000, guid: 8a52d845131c2f2459d934816680a536, type: 3}
   gameManager: {fileID: 0}
   jumpCollider: {fileID: 5814827743336422312}
+  thumbnailSprite: {fileID: 0}
+  thumbnailColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!65 &2359968242459768728
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -903,6 +906,30 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ca8879ae-cc47-4790-917a-cf749f0d14bb
     m_ActionName: Gameplay/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a568d4d0-0919-4e0b-9998-e460bd5732fa
+    m_ActionName: Player1/Move[/XInputControllerWindows/leftStick,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f60126e5-1ba9-43a7-87e4-ac45cc6e4740
+    m_ActionName: Player1/Jump[/XInputControllerWindows/buttonSouth,/Keyboard/space,/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 16cdf8bb-6d6d-4521-82aa-3a96e6dbe00c
+    m_ActionName: Player1/Attack[/XInputControllerWindows/buttonEast,/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f652b21e-8dee-4b4e-885a-ea100bac0bff
+    m_ActionName: Player2/Move[/XInputControllerWindows/leftStick,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 72272e38-206c-4eb6-ae4c-a92e50d6854b
+    m_ActionName: Player2/Jump[/XInputControllerWindows/buttonSouth,/Keyboard/space,/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4ab8bbd9-bc21-4f0c-9d91-8e4f5f76003b
+    m_ActionName: Player2/Attack[/XInputControllerWindows/buttonEast,/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Gameplay

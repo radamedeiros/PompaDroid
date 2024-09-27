@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
     public LevelData[] levels;
     public static int CurrentLevel = 0;
 
+    // Variable to determine if the game is multiplayer or singleplayer
+    public bool isMultiplayer = true;
+
     // Variables to define control schemes for each player
     public enum ControlScheme
     {
@@ -60,6 +63,35 @@ public class GameManager : MonoBehaviour
     public ControlScheme player1ControlScheme = ControlScheme.Keyboard;
     public ControlScheme player2ControlScheme = ControlScheme.Gamepad;
 
+
+    public ControlScheme Player1ControlScheme
+    {
+        get { return player1ControlScheme; }
+        set
+        {
+            if (player1ControlScheme != value)
+            {
+                player1ControlScheme = value;
+                if (player1 != null)
+                    AssignControlScheme(player1, player1ControlScheme);
+            }
+        }
+    }
+
+    public ControlScheme Player2ControlScheme
+    {
+        get { return player2ControlScheme; }
+        set
+        {
+            if (player2ControlScheme != value)
+            {
+               player2ControlScheme = value;
+                if (player2 != null)
+                    AssignControlScheme(player2, player2ControlScheme);
+            }
+        }
+    }
+
     private void Awake()
     {
         loadingScreen.SetActive(true);
@@ -67,32 +99,42 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Randomly select hero prefabs for both players
+        // Randomly select hero prefabs for player1
         GameObject player1Prefab = null;
         GameObject player2Prefab = null;
 
-        // Ensure that both players get different prefabs (optional)
+        // Copy heroPrefabs to a new list to avoid modifying the original
         List<GameObject> availablePrefabs = new List<GameObject>(heroPrefabs);
         int player1Index = Random.Range(0, availablePrefabs.Count);
         player1Prefab = availablePrefabs[player1Index];
         availablePrefabs.RemoveAt(player1Index);
-
-        int player2Index = Random.Range(0, availablePrefabs.Count);
-        player2Prefab = availablePrefabs[player2Index];
 
         // Instantiate player 1
         player1 = Instantiate(player1Prefab).GetComponent<Hero>();
         player1.playerId = 1;
         player1.name = "Player1";
         // Assign control scheme to player1
-        AssignControlScheme(player1, player1ControlScheme);
+        AssignControlScheme(player1, Player1ControlScheme);
 
-        // Instantiate player 2
-        player2 = Instantiate(player2Prefab).GetComponent<Hero>();
-        player2.playerId = 2;
-        player2.name = "Player2";
-        // Assign control scheme to player2
-        AssignControlScheme(player2, player2ControlScheme);
+        if (isMultiplayer)
+        {
+            // Ensure that there is at least one prefab left
+            if (availablePrefabs.Count == 0)
+            {
+                availablePrefabs = new List<GameObject>(heroPrefabs);
+                availablePrefabs.Remove(player1Prefab);
+            }
+
+            int player2Index = Random.Range(0, availablePrefabs.Count);
+            player2Prefab = availablePrefabs[player2Index];
+
+            // Instantiate player 2
+            player2 = Instantiate(player2Prefab).GetComponent<Hero>();
+            player2.playerId = 2;
+            player2.name = "Player2";
+            // Assign control scheme to player2
+            AssignControlScheme(player2, Player2ControlScheme);
+        }
 
         nextEventIndex = 0;
         StartCoroutine(LoadLevelData(levels[CurrentLevel]));
@@ -138,8 +180,12 @@ public class GameManager : MonoBehaviour
 
         if (cameraFollows)
         {
-            // Follow the average position between player1 and player2
-            float averageX = (player1.transform.position.x + player2.transform.position.x) / 2;
+            float averageX = player1.transform.position.x;
+            if (isMultiplayer && player2 != null)
+            {
+                // Follow the average position between player1 and player2
+                averageX = (player1.transform.position.x + player2.transform.position.x) / 2;
+            }
             cameraBounds.SetXPosition(averageX);
         }
     }
@@ -187,7 +233,12 @@ public class GameManager : MonoBehaviour
         currentBattleEvent = null;
 
         cameraFollows = true;
-        cameraBounds.CalculateOffset((player1.transform.position.x + player2.transform.position.x) / 2);
+        float cameraTargetX = player1.transform.position.x;
+        if (isMultiplayer && player2 != null)
+        {
+            cameraTargetX = (player1.transform.position.x + player2.transform.position.x) / 2;
+        }
+        cameraBounds.CalculateOffset(cameraTargetX);
         hasRemainingEvents = currentLevelData.battleData.Count > nextEventIndex;
 
         enemylifeBar.EnableLifeBar(false);
@@ -217,16 +268,26 @@ public class GameManager : MonoBehaviour
         currentLevelBackground = Instantiate(currentLevelData.levelPrefab);
 
         cameraBounds.EnableBounds(false);
-        player1.transform.position = walkInStartTarget.transform.position + Vector3.left * 1.0f;
-        player2.transform.position = walkInStartTarget.transform.position + Vector3.right * 1.0f;
+        player1.transform.position = walkInStartTarget.transform.position;
+        if (isMultiplayer && player2 != null)
+        {
+            player1.transform.position += Vector3.left * 1.0f;
+            player2.transform.position = walkInStartTarget.transform.position + Vector3.right * 1.0f;
+        }
 
         yield return new WaitForSeconds(0.1f);
 
         player1.UseAutopilot(true);
-        player1.AnimateTo(walkInTarget.transform.position + Vector3.left * 1.0f, false, DidFinishIntro);
-
-        player2.UseAutopilot(true);
-        player2.AnimateTo(walkInTarget.transform.position + Vector3.right * 1.0f, false, null);
+        if (isMultiplayer && player2 != null)
+        {
+            player1.AnimateTo(walkInTarget.transform.position + Vector3.left * 1.0f, false, DidFinishIntro);
+            player2.UseAutopilot(true);
+            player2.AnimateTo(walkInTarget.transform.position + Vector3.right * 1.0f, false, null);
+        }
+        else
+        {
+            player1.AnimateTo(walkInTarget.transform.position, false, DidFinishIntro);
+        }
 
         cameraFollows = true;
 
@@ -240,8 +301,11 @@ public class GameManager : MonoBehaviour
         player1.UseAutopilot(false);
         player1.controllable = true;
 
-        player2.UseAutopilot(false);
-        player2.controllable = true;
+        if (isMultiplayer && player2 != null)
+        {
+            player2.UseAutopilot(false);
+            player2.controllable = true;
+        }
 
         cameraBounds.EnableBounds(true);
         ShowGoIndicator();
@@ -253,11 +317,14 @@ public class GameManager : MonoBehaviour
         cameraFollows = false;
         player1.UseAutopilot(true);
         player1.controllable = false;
-        player1.AnimateTo(walkOutTarget.transform.position + Vector3.left * 1.0f, true, DidFinishWalkout);
+        player1.AnimateTo(walkOutTarget.transform.position, true, DidFinishWalkout);
 
-        player2.UseAutopilot(true);
-        player2.controllable = false;
-        player2.AnimateTo(walkOutTarget.transform.position + Vector3.right * 1.0f, true, null);
+        if (isMultiplayer && player2 != null)
+        {
+            player2.UseAutopilot(true);
+            player2.controllable = false;
+            player2.AnimateTo(walkOutTarget.transform.position + Vector3.right * 1.0f, true, null);
+        }
 
         yield return null;
     }
@@ -275,8 +342,11 @@ public class GameManager : MonoBehaviour
         cameraFollows = false;
         player1.UseAutopilot(false);
         player1.controllable = false;
-        player2.UseAutopilot(false);
-        player2.controllable = false;
+        if (isMultiplayer && player2 != null)
+        {
+            player2.UseAutopilot(false);
+            player2.controllable = false;
+        }
     }
 
     private IEnumerator AnimateNextLevel()
@@ -303,9 +373,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ShowBanner creates an instance of its prefab parameter and parents it to the class’
-    // uiTransform field. It also sets the title of the prefab’s Text component to the value
-    // of the bannerText parameter.
     private void ShowBanner(string bannerText, GameObject prefab)
     {
         GameObject obj = Instantiate(prefab);
@@ -331,3 +398,4 @@ public class GameManager : MonoBehaviour
         ShowBanner(levelName, levelNamePrefab);
     }
 }
+

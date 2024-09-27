@@ -59,6 +59,12 @@ PrefabInstance:
       propertyPath: walkSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4022588769082479474, guid: 70c00b0d73e44944cba987af03460c4a,
+        type: 3}
+      propertyPath: actorThumbnail
+      value: 
+      objectReference: {fileID: 21300000, guid: 31818c14f425ab8469149caa748279f6,
+        type: 3}
     - target: {fileID: 4101982751161142397, guid: 70c00b0d73e44944cba987af03460c4a,
         type: 3}
       propertyPath: m_Controller
